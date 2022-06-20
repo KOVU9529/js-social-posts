@@ -84,7 +84,7 @@ const socialArray=[
 //Genero la varibile per il contenitore che conterrà le card(post)
 const containerClass=document.getElementById('container');
 //Stampo un post per volta scorrendo tramite il ciclo for
-for(i=0; i<socialArray.length; i++){
+for(let i=0; i<socialArray.length; i++){
     const singleSocial=socialArray[i];
     //Completo il template ricopiando la sequenza html e sostituendo i valori con le informazioni date dagli oggetti nell'array
 const postDraw=
@@ -125,3 +125,24 @@ containerClass.innerHTML += postDraw;
 //Millestone 3
 //Cliccando sul bottone mi piace cambia il colore 
 //Aumenta di uno il numero dei like
+
+//Genero le variabili inerenti al bottone cliccato e l'aumento dei like
+const allClick= document.querySelectorAll('.post__footer a');
+const allNumbersLike=document.querySelectorAll('.post__footer b');
+
+//Genero il ciclo for
+for(let i=0; i<allClick.length; i++){
+    const thisClick=allClick[i];
+    //Impostiamo le conseguenze del click
+    thisClick.addEventListener('click',function(event){
+        //evitiamo il comportamento di defaul del browser
+        event.preventDefault();
+        //Imposto il cambio di colore al click
+        thisClick.classList.add('like-button--liked');
+        //Prendo il numero e lo incremento
+        const relatedNumberLike=allNumbersLike[i];
+        let convertedLike=parseInt(relatedNumberLike.innerHTML);
+        convertedLike++;
+        relatedNumberLike.innerHTML=convertedLike;
+    });
+}
