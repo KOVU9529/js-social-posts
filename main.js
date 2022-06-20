@@ -86,24 +86,23 @@ const containerClass=document.getElementById('container');
 //Stampo un post per volta scorrendo tramite il ciclo for
 for(i=0; i<socialArray.length; i++){
     const singleSocial=socialArray[i];
-}
-//Completo il template ricopiando la sequenza html e sostituendo i valori con le informazioni date dagli oggetti nell'array
+    //Completo il template ricopiando la sequenza html e sostituendo i valori con le informazioni date dagli oggetti nell'array
 const postDraw=
 `<div class="post">
 <div class="post__header">
 <div class="post-meta">                    
     <div class="post-meta__icon">
-        <img class="profile-pic" src="${socialArray.photoProfile}" alt="Phil Mangione">                    
+        <img class="profile-pic" src="${singleSocial.photoProfile}" alt="Phil Mangione">                    
     </div>
     <div class="post-meta__data">
-        <div class="post-meta__author">${socialArray.nameAutor}</div>
+        <div class="post-meta__author">${singleSocial.nameAutor}</div>
         <div class="post-meta__time">${socialArray.date}</div>
     </div>                    
 </div>
 </div>
-<div class="post__text"> ${socialArray.textPost}</div>
+<div class="post__text"> ${singleSocial.textPost}</div>
 <div class="post__image">
-<img src="${socialArray.imagePost}" alt="">
+<img src="${singleSocial.imagePost}" alt="">
 </div>
 <div class="post__footer">
 <div class="likes js-likes">
@@ -114,7 +113,43 @@ const postDraw=
         </a>
     </div>
     <div class="likes__counter">
-        Piace a <b id="like-counter-1" class="js-likes-counter">${socialArray.numbersLike}</b> persone
+        Piace a <b id="like-counter-1" class="js-likes-counter">${singleSocial.numbersLike}</b> persone
+    </div>
+</div> 
+</div>            
+</div>`
+
+//Infine concateno
+containerClass.innerHTML += postDraw;
+}
+//Completo il template ricopiando la sequenza html e sostituendo i valori con le informazioni date dagli oggetti nell'array
+const postDraw=
+`<div class="post">
+<div class="post__header">
+<div class="post-meta">                    
+    <div class="post-meta__icon">
+        <img class="profile-pic" src="${singleSocial.photoProfile}" alt="Phil Mangione">                    
+    </div>
+    <div class="post-meta__data">
+        <div class="post-meta__author">${singleSocial.nameAutor}</div>
+        <div class="post-meta__time">${socialArray.date}</div>
+    </div>                    
+</div>
+</div>
+<div class="post__text"> ${singleSocial.textPost}</div>
+<div class="post__image">
+<img src="${singleSocial.imagePost}" alt="">
+</div>
+<div class="post__footer">
+<div class="likes js-likes">
+    <div class="likes__cta">
+        <a class="like-button  js-like-button" href="#" data-postid="1">
+            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+            <span class="like-button__label">Mi Piace</span>
+        </a>
+    </div>
+    <div class="likes__counter">
+        Piace a <b id="like-counter-1" class="js-likes-counter">${singleSocial.numbersLike}</b> persone
     </div>
 </div> 
 </div>            
