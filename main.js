@@ -137,12 +137,22 @@ for(let i=0; i<allClick.length; i++){
     thisClick.addEventListener('click',function(event){
         //evitiamo il comportamento di defaul del browser
         event.preventDefault();
-        //Imposto il cambio di colore al click
-        thisClick.classList.add('like-button--liked');
-        //Prendo il numero e lo incremento
+    //bonus3
+    if(!this.classList.contains('like-button--liked')){
+         //Imposto il cambio di colore al click
+         thisClick.classList.add('like-button--liked');
+         //Prendo il numero e lo incremento
+         const relatedNumberLike=allNumbersLike[i];
+         let convertedLike=parseInt(relatedNumberLike.innerHTML);
+         convertedLike++;
+         relatedNumberLike.innerHTML=convertedLike;
+    }
+    else if(this.classList.contains('like-button--liked')){
+        this.classList.remove('like-button--liked');
         const relatedNumberLike=allNumbersLike[i];
-        let convertedLike=parseInt(relatedNumberLike.innerHTML);
-        convertedLike++;
-        relatedNumberLike.innerHTML=convertedLike;
+         let convertedLike=parseInt(relatedNumberLike.innerHTML);
+         convertedLike--;
+         relatedNumberLike.innerHTML=convertedLike;
+    }   
     });
 }
